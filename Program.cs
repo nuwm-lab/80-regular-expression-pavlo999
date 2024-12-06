@@ -1,18 +1,32 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
-namespace LabWork
+namespace lab7
 {
-    // Даний проект є шаблоном для виконання лабораторних робіт
-    // з курсу "Об'єктно-орієнтоване програмування та патерни проектування"
-    // Необхідно змінювати і дописувати код лише в цьому проекті
-    // Відео-інструкції щодо роботи з github можна переглянути 
-    // за посиланням https://www.youtube.com/@ViktorZhukovskyy/videos 
     class Program
     {
         static void Main(string[] args)
         {
-            
-            Console.WriteLine("Hello World!");
+            // Задане речення
+            string sentence = "Це приклад речення для роздрукування всіх слів у стовпчик.";
+
+            // Регулярний вираз для пошуку слів (послідовність букв)
+            string pattern = @"\w+";
+
+            // Створюємо об'єкт регулярного виразу
+            Regex regex = new Regex(pattern);
+
+            // Знаходимо всі збіги (слова)
+            MatchCollection matches = regex.Matches(sentence);
+
+            // Виводимо кожне слово в стовпчик
+            foreach (Match match in matches)
+            {
+                Console.WriteLine(match.Value);
+            }
+
+            // Затримка для перегляду результатів
+            Console.ReadLine();
         }
     }
 }
